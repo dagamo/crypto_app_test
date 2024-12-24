@@ -10,7 +10,9 @@ import {SafeAreaView, useColorScheme} from 'react-native';
 import {PaperProvider} from 'react-native-paper';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import HomeScreen from './screens/home';
+import {NavigationContainer} from '@react-navigation/native';
+import RootStack from './src/navigation/StackNavigator';
+import {NotificationProvider} from './src/context/notification';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,7 +25,11 @@ function App(): React.JSX.Element {
   return (
     <PaperProvider>
       <SafeAreaView style={backgroundStyle}>
-        <HomeScreen />
+        <NavigationContainer>
+          <NotificationProvider>
+            <RootStack />
+          </NotificationProvider>
+        </NavigationContainer>
       </SafeAreaView>
     </PaperProvider>
   );
