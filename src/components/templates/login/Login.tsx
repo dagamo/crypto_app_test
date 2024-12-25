@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
-import LoginForm from '../organisms/login';
+import LoginForm from '../../organisms/login';
 import {ITemplateProps} from './interface';
 
 export default function LoginTemplate({onSubmit}: ITemplateProps) {

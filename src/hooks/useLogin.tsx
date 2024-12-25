@@ -8,7 +8,6 @@ export const useLogin = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {setUsername} = useUserStore();
   const onSignIn = (username: string) => {
-    console.log('* username', username);
     setUsername(username);
     navigation.navigate('Home');
   };

@@ -5,7 +5,6 @@ export const validateSignIn = (
   username: string,
   router: NativeStackNavigationProp<RootStackParamList>,
 ) => {
-  console.log('* username validating', username);
   if (!username) {
     return router.replace('Login');
   }
