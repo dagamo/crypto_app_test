@@ -1,10 +1,10 @@
 import React from 'react';
 import ContentLoader, {Rect, Circle} from 'react-content-loader/native';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 const CryptoSkeletonList = () => {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {[...Array(10)].map((_, index) => (
         <View
           key={`crypto-skeleton-${index}`}
@@ -23,7 +23,7 @@ const CryptoSkeletonList = () => {
           </ContentLoader>
         </View>
       ))}
-    </ScrollView>
+    </View>
   );
 };
 
