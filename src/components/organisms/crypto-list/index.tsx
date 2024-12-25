@@ -4,6 +4,7 @@ import {FlatList, StyleSheet, View} from 'react-native';
 import {ICryptoList} from './interface';
 import {ITicker} from '@/interfaces/models/ticker';
 import TickerCard from '@/components/molecules/ticker-card';
+import CryptoSkeletonList from '../crypto-list-skeleton';
 
 export default function CryptoList({data}: ICryptoList) {
   const renderCard = useCallback(({item}: {item: ITicker}) => {
@@ -11,7 +12,11 @@ export default function CryptoList({data}: ICryptoList) {
   }, []);
   return (
     <View style={styles.container}>
-      <FlatList data={data} renderItem={renderCard} />
+      <FlatList
+        data={data}
+        renderItem={renderCard}
+        ListEmptyComponent={CryptoSkeletonList}
+      />
     </View>
   );
 }
