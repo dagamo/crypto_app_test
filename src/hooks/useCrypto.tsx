@@ -10,6 +10,7 @@ export const useCrypto = () => {
     queryKey: [QueryKeys.Crypto],
     refetchOnReconnect: true,
     refetchOnWindowFocus: false,
+    networkMode: 'offlineFirst',
   });
   return {
     isError,

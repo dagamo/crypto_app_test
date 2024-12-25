@@ -4,7 +4,7 @@ import {ITickerCardProps} from '@/components/molecules/ticker-card/interface';
 
 export interface ICryptoList
   extends Pick<IHeaderCryptoListProps, 'onSearch'>,
-    Pick<ITickerCardProps, 'getImage' | 'onPressItem'> {
+    Pick<ITickerCardProps, 'getImage' | 'onPressItem' | 'isDisabled'> {
   data: ITicker[];
   isLoading: boolean;
 }

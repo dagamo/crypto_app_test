@@ -13,14 +13,20 @@ export default function CryptoList({
   isLoading,
   getImage,
   onPressItem,
+  isDisabled,
 }: ICryptoList) {
   const renderCard = useCallback(
     ({item}: {item: ITicker}) => {
       return (
-        <TickerCard info={item} getImage={getImage} onPressItem={onPressItem} />
+        <TickerCard
+          info={item}
+          getImage={getImage}
+          onPressItem={onPressItem}
+          isDisabled={isDisabled}
+        />
       );
     },
-    [getImage, onPressItem],
+    [getImage, onPressItem, isDisabled],
   );
 
   const renderHeader = useCallback(

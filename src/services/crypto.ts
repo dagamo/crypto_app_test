@@ -15,4 +15,10 @@ export default class CryptoService extends ServiceRequest {
     );
     return result.data;
   }
+  async getTickerById(id: string) {
+    const result: AxiosResponse<ITickerGetResponse> = await this.axios.get(
+      `${this.url}/?id=${id}`,
+    );
+    return result.data;
+  }
 }
