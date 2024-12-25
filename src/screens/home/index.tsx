@@ -10,9 +10,13 @@ import HomeTemplate from '@/components/templates/home/Home';
 import useUserStore from '@/state/user';
 import React, {useCallback, useMemo} from 'react';
 import cryptoImages from '@/utils/crypto.json';
+import {useNavigation} from '@react-navigation/native';
+import {TNavigationRoutes} from '@/interfaces/types/navigation';
+import {TTicker} from '@/components/molecules/ticker-card/interface';
 
 function HomeScreen(): React.JSX.Element {
   const {username} = useUserStore();
+  const navigation = useNavigation<TNavigationRoutes>();
   const [searchText, setSearchText] = React.useState('');
   const {isLoading, data} = useCrypto();
 
@@ -28,6 +32,13 @@ function HomeScreen(): React.JSX.Element {
     return imgURL;
   }, []);
 
+  const onPressItem = useCallback(
+    (info: TTicker) => {
+      navigation.navigate('Ticker');
+    },
+    [navigation],
+  );
+
   return (
     <HomeTemplate username={username}>
       <HomeTemplate.CrytpoList
@@ -35,6 +46,7 @@ function HomeScreen(): React.JSX.Element {
         isLoading={isLoading}
         getImage={getImage}
         onSearch={setSearchText}
+        onPressItem={onPressItem}
       />
     </HomeTemplate>
   );

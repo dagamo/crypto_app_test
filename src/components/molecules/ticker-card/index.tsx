@@ -6,7 +6,7 @@ import {formatCurrencyUSD} from '@/utils/formatToCurrency';
 import {formatToPercentage} from '@/utils/formatToPercentage';
 import {truncateText} from '@/utils/truncateText';
 
-const TickerCard = ({info, getImage}: ITickerCardProps) => {
+const TickerCard = ({info, getImage, onPressItem}: ITickerCardProps) => {
   const colorStyle = React.useMemo(() => {
     return parseFloat(info.percent_change_24h) > 0
       ? styles.percent_change_24h_green
@@ -42,8 +42,12 @@ const TickerCard = ({info, getImage}: ITickerCardProps) => {
     return <Avatar.Text size={50} label={truncateText(info.symbol, 2)} />;
   }, [getImage, info.symbol]);
 
+  const onPressCard = React.useCallback(() => {
+    onPressItem(info);
+  }, [onPressItem, info]);
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPressCard}>
       <Card.Title
         style={styles.card}
         title={info.symbol}

@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './../screens/login/index';
 import HomeScreen from '../screens/home';
 import InitScreen from '../screens/init';
+import TickerScreen from '@/screens/ticker';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,11 @@ function RootStack() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Ticker"
+        component={TickerScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

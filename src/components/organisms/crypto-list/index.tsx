@@ -12,12 +12,15 @@ export default function CryptoList({
   onSearch,
   isLoading,
   getImage,
+  onPressItem,
 }: ICryptoList) {
   const renderCard = useCallback(
     ({item}: {item: ITicker}) => {
-      return <TickerCard info={item} getImage={getImage} />;
+      return (
+        <TickerCard info={item} getImage={getImage} onPressItem={onPressItem} />
+      );
     },
-    [getImage],
+    [getImage, onPressItem],
   );
 
   const renderHeader = useCallback(
