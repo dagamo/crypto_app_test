@@ -1,7 +1,9 @@
-import {useState, createContext, ReactNode} from 'react';
+import React from 'react';
+import {useState, createContext, ReactNode, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import {Snackbar} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import NetInfo from '@react-native-community/netinfo';
 
 type NotificationContext = {
   openNotification: boolean;
@@ -27,6 +29,20 @@ export const NotificationProvider = ({children}: {children: ReactNode}) => {
     message: '',
     type: 'info',
   });
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      if (!state.isConnected) {
+        setOpenNotification(
+          'No internet connection. Please check your connection and try again.',
+          'error',
+        );
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, []);
 
   const setOpenNotification = (
     message: string,
