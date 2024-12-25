@@ -1,10 +1,11 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
-
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@hooks/*": ["src/hooks/*"], // Ajustado para apuntar correctamente
+      "@services/*": ["src/services/*"] // Ajustado para apuntar correctamente
     },
     "target": "esnext",
     "module": "Node16",
