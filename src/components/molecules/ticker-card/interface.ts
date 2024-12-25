@@ -5,4 +5,5 @@ export interface ITickerCardProps {
     ITicker,
     'id' | 'name' | 'symbol' | 'price_usd' | 'percent_change_24h'
   >;
+  getImage: (symbol: string) => string;
 }

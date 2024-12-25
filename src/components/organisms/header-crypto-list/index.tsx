@@ -1,6 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
 import {StyleSheet, View} from 'react-native';
-
 import {IHeaderCryptoListProps} from './interface';
 import {Button, Searchbar} from 'react-native-paper';
 
@@ -40,7 +39,7 @@ export default function HeaderCryptoList({onSearch}: IHeaderCryptoListProps) {
         </View>
       </View>
     );
-  }, [_onSearch, searchQuery, onChangeText]);
+  }, [_onSearch, searchQuery, onChangeText, onClear]);
 }
 
 const styles = StyleSheet.create({

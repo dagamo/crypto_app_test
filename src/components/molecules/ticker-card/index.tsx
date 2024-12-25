@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {Avatar, Card, Text} from 'react-native-paper';
 import {ITickerCardProps} from './interface';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {formatCurrencyUSD} from '@/utils/formatToCurrency';
 import {formatToPercentage} from '@/utils/formatToPercentage';
+import {truncateText} from '@/utils/truncateText';
 
-const TickerCard = ({info}: ITickerCardProps) => {
+const TickerCard = ({info, getImage}: ITickerCardProps) => {
   const colorStyle = React.useMemo(() => {
     return parseFloat(info.percent_change_24h) > 0
       ? styles.percent_change_24h_green
@@ -26,14 +27,31 @@ const TickerCard = ({info}: ITickerCardProps) => {
     [info.price_usd, info.percent_change_24h, colorStyle],
   );
 
+  const renderLeftComponent = React.useCallback(() => {
+    const image = getImage(info.symbol);
+    if (image) {
+      return (
+        <Avatar.Image
+          size={50}
+          source={{
+            uri: getImage(info.symbol),
+          }}
+        />
+      );
+    }
+    return <Avatar.Text size={50} label={truncateText(info.symbol, 2)} />;
+  }, [getImage, info.symbol]);
+
   return (
-    <Card.Title
-      style={styles.card}
-      title={info.symbol}
-      subtitle={info.name}
-      left={props => <Avatar.Icon {...props} icon="folder" />}
-      right={renderRightComponent}
-    />
+    <TouchableOpacity>
+      <Card.Title
+        style={styles.card}
+        title={info.symbol}
+        subtitle={info.name}
+        left={renderLeftComponent}
+        right={renderRightComponent}
+      />
+    </TouchableOpacity>
   );
 };
 
