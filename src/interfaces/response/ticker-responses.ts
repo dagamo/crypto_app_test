@@ -9,3 +9,6 @@ export interface ITickerGetResponse {
   data: ITicker[];
   info: ITickerAvailable;
 }
+export interface ITickerGetByIdResponse {
+  data: ITicker[];
+}

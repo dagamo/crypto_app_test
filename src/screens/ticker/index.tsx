@@ -5,19 +5,25 @@
  * @format
  */
 
+import TickerTemplate from '@/components/templates/ticker/Ticker';
 import {useCryptoById} from '@/hooks/useCryptoById';
 import useTickerStore from '@/state/ticker';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import {Text} from 'react-native-paper';
 
 function TickerScreen(): React.JSX.Element {
-  const {selected} = useTickerStore();
-  console.log('* id', selected?.id);
-  const {data, isLoading} = useCryptoById(selected?.id);
+  const {selected, pricesData, clearPrices} = useTickerStore();
+  const {isLoading, timer} = useCryptoById(selected?.id);
+  useEffect(() => {
+    return () => {
+      clearPrices();
+    };
+  }, []);
   return (
-    <View>
-      <Text>Ticker</Text>
+    <View style={{flex: 1}}>
+      <TickerTemplate isLoading={isLoading} timer={timer}>
+        <TickerTemplate.LineChart data={pricesData} />
+      </TickerTemplate>
     </View>
   );
 }

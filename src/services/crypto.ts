@@ -1,6 +1,7 @@
 import ServiceRequest from './service-request';
 import {AxiosInstance, AxiosResponse} from 'axios';
 import {ITickerGetResponse} from '@/interfaces/response/ticker-responses';
+import {ITicker} from '@/interfaces/models/ticker';
 
 export default class CryptoService extends ServiceRequest {
   private axios: AxiosInstance;
@@ -15,9 +16,9 @@ export default class CryptoService extends ServiceRequest {
     );
     return result.data;
   }
-  async getTickerById(id: string) {
-    const result: AxiosResponse<ITickerGetResponse> = await this.axios.get(
-      `${this.url}/?id=${id}`,
+  async getTickerById(id: string): Promise<ITicker[]> {
+    const result: AxiosResponse<ITicker[]> = await this.axios.get(
+      `ticker/?id=${id}`,
     );
     return result.data;
   }
