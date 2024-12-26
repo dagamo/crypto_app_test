@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, createContext, ReactNode} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Snackbar} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useConnection} from '@/hooks/useConnection';
@@ -49,34 +49,34 @@ export const NotificationProvider = ({children}: {children: ReactNode}) => {
   return (
     <NotificationContext.Provider
       value={{openNotification: notification.open, setOpenNotification}}>
-      <SafeAreaView style={style.safeArea}>
-        {children}
-        <Snackbar
-          visible={notification.open}
-          onDismiss={close}
-          duration={3000}
-          wrapperStyle={{
-            top: 0,
-            right: 0,
-            left: 0,
-          }}
-          style={[
-            notification.type === 'success' && {backgroundColor: '#4caf50'},
-            notification.type === 'error' && {backgroundColor: '#f44336'},
-            notification.type === 'info' && {backgroundColor: '#2196f3'},
-          ]}
-          action={{
-            label: 'Undo',
-            onPress: close,
-          }}>
-          {notification.message}
-        </Snackbar>
-      </SafeAreaView>
+      <View style={style.safeArea}>{children}</View>
+      <Snackbar
+        visible={notification.open}
+        onDismiss={close}
+        duration={3000}
+        wrapperStyle={{
+          top: 0,
+          right: 0,
+          left: 0,
+        }}
+        style={[
+          notification.type === 'success' && {backgroundColor: '#4caf50'},
+          notification.type === 'error' && {backgroundColor: '#f44336'},
+          notification.type === 'info' && {backgroundColor: '#2196f3'},
+        ]}
+        action={{
+          label: 'Undo',
+          onPress: close,
+        }}>
+        {notification.message}
+      </Snackbar>
     </NotificationContext.Provider>
   );
 };
 const style = StyleSheet.create({
   safeArea: {
     flex: 1,
+
+    paddingTop: 20,
   },
 });

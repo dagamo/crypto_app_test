@@ -6,6 +6,8 @@ import LoginScreen from './../screens/login/index';
 import HomeScreen from '../screens/home';
 import InitScreen from '../screens/init';
 import TickerScreen from '@/screens/ticker';
+import {View} from 'react-native';
+import {IconButton} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +32,19 @@ function RootStack() {
       <Stack.Screen
         name="Ticker"
         component={TickerScreen}
-        options={{headerShown: false}}
+        options={{
+          headerShown: true,
+          header: props => {
+            return (
+              <View>
+                <IconButton
+                  icon="arrow-left"
+                  onPress={() => props.navigation.goBack()}
+                />
+              </View>
+            );
+          },
+        }}
       />
     </Stack.Navigator>
   );
