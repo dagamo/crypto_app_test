@@ -21,7 +21,7 @@ const HomeTemplate: React.FC<IHomeTemplateProps> & IHomeTemplateChildren = ({
     <View style={styles.container}>
       <WelcomeDialog
         visible={showWelcomeDialog}
-        message={`Hi ${username}, welcome to Crypto App`}
+        message={`Hi ${username}, explore the world of crypto with us!`}
         hideDialog={() => setShowWelcomeDialog(false)}
       />
       {children}
