@@ -2,7 +2,10 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # IOS APP
 
-<img src="src/assets/ios1.png" alt="Pantalla principal" height="200">
+Login
+<img src="src/assets/ios1.png" alt="Pantalla principal" height="400">
+Home
+<img src="src/assets/ios2.png" alt="Pantalla principal" height="400">
 
 # Getting Started
 
