@@ -1,3 +1,3 @@
 export interface ILineChartProps {
-  data: any[];
+  data: {time: string; price: number}[];
 }

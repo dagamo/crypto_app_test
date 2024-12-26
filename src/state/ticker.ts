@@ -4,9 +4,9 @@ import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 interface TickerStore {
   selected: TTicker | null;
-  pricesData: number[];
+  pricesData: {time: string; price: number}[];
   setSelected: (selected: TTicker) => void;
-  setPricesData: (data: number) => void;
+  setPricesData: (data: {time: string; price: number}) => void;
   reset: () => void;
   resetPrices: () => void;
   clearPrices: () => void;
@@ -18,7 +18,7 @@ const useTickerStore = create<TickerStore>()(
       selected: null,
       pricesData: [],
       setSelected: (selected: TTicker) => set(state => ({...state, selected})),
-      setPricesData: (data: number) =>
+      setPricesData: (data: {time: string; price: number}) =>
         set(state => ({...state, pricesData: [...state.pricesData, data]})),
       reset: () => set({selected: null}),
       resetPrices: () =>

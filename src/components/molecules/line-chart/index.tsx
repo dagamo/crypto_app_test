@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-
 import {LineChart} from 'react-native-chart-kit';
 import {useTheme} from 'react-native-paper';
 import {ILineChartProps} from './interface';
@@ -9,6 +8,7 @@ import {formatCurrencyUSD} from '@/utils/formatToCurrency';
 import SkeletonChartLoader from '../line-chart-skeleton';
 
 const {width} = Dimensions.get('window');
+
 const LineChartComponent = ({data}: ILineChartProps) => {
   const theme = useTheme();
   return (
@@ -16,18 +16,21 @@ const LineChartComponent = ({data}: ILineChartProps) => {
       {data.length ? (
         <LineChart
           data={{
-            labels: Array(data.length).fill(''),
+            labels: data.map(item => item.time), // Etiquetas del eje X (tiempo)
             datasets: [
               {
-                data,
-                strokeWidth: 2,
+                data: data.map(item => item.price), // Precios en el eje Y
+                strokeWidth: 2, // Grosor de la línea
               },
             ],
           }}
           width={width}
           height={220}
+          formatXLabel={xLabel => {
+            return xLabel; // Deberías retornar la etiqueta directamente (tiempo)
+          }}
           formatYLabel={xLabel => {
-            return formatCurrencyUSD(xLabel);
+            return formatCurrencyUSD(xLabel); // Formato de la moneda
           }}
           bezier
           yLabelsOffset={-1}
@@ -35,23 +38,20 @@ const LineChartComponent = ({data}: ILineChartProps) => {
             backgroundColor: theme.colors.primary,
             backgroundGradientFrom: theme.colors.primary,
             backgroundGradientTo: theme.colors.primary,
-
-            decimalPlaces: 2, // Número de decimales
+            decimalPlaces: 2, // Decimales para el precio
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
               borderRadius: 16,
             },
-            scrollableInfoOffset: 10,
             propsForDots: {
               r: '6',
               strokeWidth: '2',
-
               stroke: theme.colors.secondary,
             },
           }}
           withDots={true}
-          withVerticalLabels={false}
+          withVerticalLabels={true} // Asegúrate de que las etiquetas verticales estén habilitadas
         />
       ) : (
         <SkeletonChartLoader />

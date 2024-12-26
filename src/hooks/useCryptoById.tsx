@@ -10,6 +10,7 @@ import {
 } from '@/utils/initInterval';
 import NetInfo from '@react-native-community/netinfo';
 import {NotificationContext} from '@/context/notification';
+import {format} from 'date-fns';
 export const useCryptoById = (id?: string) => {
   const {setOpenNotification} = useContext(NotificationContext);
   const idTimerIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -23,7 +24,10 @@ export const useCryptoById = (id?: string) => {
     networkMode: 'offlineFirst',
     onSuccess: data => {
       setTimer(MAX_TIME);
-      setPricesData(parseFloat(data[0].price_usd));
+      setPricesData({
+        time: format(new Date(), 'HH:mm'),
+        price: parseFloat(data[0].price_usd),
+      });
     },
     onError: err => {
       setOpenNotification(err?.message || 'Something went wrong', 'error');
