@@ -6,7 +6,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
   <img src="src/assets/ios1.png" height="400">
   <img src="src/assets/ios2.png" height="400">
   <img src="src/assets/ios3.png" height="400">
-  <img src="src/assets/ios4.png" height="400">
+  <img src="src/assets/ios6.png" height="400">
   <img src="src/assets/ios5.png" height="400">
 </div>
 
@@ -16,7 +16,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
   <img src="src/assets/android1.png" height="400">
   <img src="src/assets/android2.png" height="400">
   <img src="src/assets/android3.png" height="400">
-  <img src="src/assets/android4.png" height="400">
+  <img src="src/assets/android6.png" height="400">
   <img src="src/assets/android5.png" height="400">
 </div>
 

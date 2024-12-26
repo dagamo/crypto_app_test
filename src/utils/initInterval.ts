@@ -1,5 +1,5 @@
 const MAX_REQUEST_COUNT = 5;
-export const MAX_TIME = 5; // in seconds
+export const MAX_TIME = 30; // in seconds
 
 export const initTimerInterval = ({
   decrementTimer,
