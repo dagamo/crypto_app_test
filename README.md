@@ -2,10 +2,15 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # IOS APP
 
-Login
 <img src="src/assets/ios1.png" alt="Pantalla principal" height="400">
-Home
+
 <img src="src/assets/ios2.png" alt="Pantalla principal" height="400">
+
+<img src="src/assets/ios3.png" alt="Pantalla principal" height="400">
+
+<img src="src/assets/ios4.png" alt="Pantalla principal" height="400">
+
+<img src="src/assets/ios5.png" alt="Pantalla principal" height="400">
 
 # Getting Started
 
