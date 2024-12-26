@@ -22,7 +22,7 @@ export default function HeaderCryptoList({onSearch}: IHeaderCryptoListProps) {
     return (
       <View style={styles.container}>
         <Searchbar
-          placeholder={'Search crypto by 24 %'}
+          placeholder={'Filter by Minimum 24-hr % Change'}
           onChangeText={onChangeText}
           value={searchQuery}
           style={styles.searchbar}

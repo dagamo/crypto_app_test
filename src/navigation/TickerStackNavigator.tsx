@@ -2,31 +2,20 @@
 
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from './../screens/login/index';
-import InitScreen from '../screens/init';
+
+import HomeScreen from '../screens/home';
 import TickerScreen from '@/screens/ticker';
 import {View} from 'react-native';
 import {IconButton} from 'react-native-paper';
-import BottomTabNavigator from './BottonNavigator';
 
 const Stack = createNativeStackNavigator();
 
-function RootStack() {
+function TickerStackNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Init">
+    <Stack.Navigator initialRouteName="Tickers">
       <Stack.Screen
-        name="Init"
-        component={InitScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Home"
-        component={BottomTabNavigator}
+        name="Tickers"
+        component={HomeScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -51,4 +40,4 @@ function RootStack() {
   );
 }
 
-export default RootStack;
+export default TickerStackNavigator;

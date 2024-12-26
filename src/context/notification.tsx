@@ -2,7 +2,6 @@ import React from 'react';
 import {useState, createContext, ReactNode} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Snackbar} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {useConnection} from '@/hooks/useConnection';
 
 type NotificationContext = {

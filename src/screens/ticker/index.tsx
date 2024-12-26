@@ -19,10 +19,12 @@ function TickerScreen(): React.JSX.Element {
     return () => {
       clearPrices();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getImage = useCallback(() => {
     return cryptoImages.find(crypto => crypto.symbol === selected?.symbol)
       ?.icon;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <View style={{flex: 1}}>
