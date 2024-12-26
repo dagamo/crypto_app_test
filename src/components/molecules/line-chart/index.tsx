@@ -2,8 +2,13 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {LineChart} from 'react-native-chart-kit';
-import {Text, useTheme} from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
 import {ILineChartProps} from './interface';
+import {Dimensions} from 'react-native';
+import {formatCurrencyUSD} from '@/utils/formatToCurrency';
+import SkeletonChartLoader from '../line-chart-skeleton';
+
+const {width} = Dimensions.get('window');
 const LineChartComponent = ({data}: ILineChartProps) => {
   const theme = useTheme();
   return (
@@ -19,21 +24,29 @@ const LineChartComponent = ({data}: ILineChartProps) => {
               },
             ],
           }}
-          width={350}
+          width={width}
           height={220}
+          formatYLabel={xLabel => {
+            return formatCurrencyUSD(xLabel);
+          }}
+          bezier
+          yLabelsOffset={-1}
           chartConfig={{
             backgroundColor: theme.colors.primary,
             backgroundGradientFrom: theme.colors.primary,
             backgroundGradientTo: theme.colors.primary,
+
             decimalPlaces: 2, // Número de decimales
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
               borderRadius: 16,
             },
+            scrollableInfoOffset: 10,
             propsForDots: {
               r: '6',
               strokeWidth: '2',
+
               stroke: theme.colors.secondary,
             },
           }}
@@ -41,7 +54,7 @@ const LineChartComponent = ({data}: ILineChartProps) => {
           withVerticalLabels={false}
         />
       ) : (
-        <Text>No data to Show</Text>
+        <SkeletonChartLoader />
       )}
     </View>
   );
@@ -50,9 +63,6 @@ const LineChartComponent = ({data}: ILineChartProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
   },
   chart: {
     height: 200,

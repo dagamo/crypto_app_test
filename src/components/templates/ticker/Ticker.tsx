@@ -2,15 +2,23 @@ import LineChartComponent from '@/components/molecules/line-chart';
 import React, {useMemo} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ITickerTemplateChildren, ITickerTemplateProps} from './interface';
-import {Text} from 'react-native-paper';
+import {Avatar, Text} from 'react-native-paper';
 
 const TickerTemplate: React.FC<ITickerTemplateChildren> &
-  ITickerTemplateProps = ({children, timer}) => {
+  ITickerTemplateProps = ({children, timer, getImage}) => {
   return useMemo(
     () => (
       <View style={styles.container}>
-        <View>
-          <Text style={{fontSize: 20, color: 'red'}}>Timer: {timer}</Text>
+        <Avatar.Image
+          size={150}
+          source={{
+            uri: getImage(),
+          }}></Avatar.Image>
+        <View style={styles.textContainer}>
+          <Text style={styles.text_bold} variant="titleLarge">
+            Timer:{' '}
+          </Text>
+          <Text variant="titleLarge">{timer}</Text>
         </View>
         {children}
       </View>
@@ -23,9 +31,14 @@ TickerTemplate.LineChart = LineChartComponent;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    rowGap: 20,
+  },
+  textContainer: {
+    flexDirection: 'row',
+  },
+  text_bold: {
+    fontWeight: 'bold',
   },
 });
 
