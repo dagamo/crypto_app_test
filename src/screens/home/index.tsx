@@ -17,7 +17,7 @@ import NetInfo from '@react-native-community/netinfo';
 import useTickerStore from '@/state/ticker';
 
 function HomeScreen(): React.JSX.Element {
-  const {username} = useUserStore();
+  const {username, isFirstTime, setIsFirstTime} = useUserStore();
   const {setSelected} = useTickerStore();
   const navigation = useNavigation<TNavigationRoutes>();
   const [searchText, setSearchText] = React.useState('');
@@ -56,8 +56,15 @@ function HomeScreen(): React.JSX.Element {
     [navigation, setSelected],
   );
 
+  const onHideWelcomeDialog = useCallback(() => {
+    setIsFirstTime(false);
+  }, [setIsFirstTime]);
+
   return (
-    <HomeTemplate username={username}>
+    <HomeTemplate
+      username={username}
+      isFirstTime={isFirstTime}
+      onHideWelcomeDialog={onHideWelcomeDialog}>
       <HomeTemplate.CrytpoList
         data={dataFiltered || []}
         isLoading={isLoading}

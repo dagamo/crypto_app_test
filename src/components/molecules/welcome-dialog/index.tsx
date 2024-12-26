@@ -2,8 +2,10 @@ import * as React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Button, Dialog, Portal, Text} from 'react-native-paper';
 import {IWelcomeDialogProps} from './interface';
+import {useTranslation} from 'react-i18next';
 
 const WelcomeDialog = ({message, visible, hideDialog}: IWelcomeDialogProps) => {
+  const {t} = useTranslation();
   return (
     <Portal>
       <Dialog visible={visible} onDismiss={hideDialog}>
@@ -15,12 +17,16 @@ const WelcomeDialog = ({message, visible, hideDialog}: IWelcomeDialogProps) => {
             style={styles.icon}
           />
         </View>
-        <Dialog.Title style={styles.title}>Welcome to Crypto App</Dialog.Title>
+        <Dialog.Title style={styles.title}>
+          {t('welcomen-dialog.title')}
+        </Dialog.Title>
         <Dialog.Content>
           <Text variant="bodyMedium">{message} </Text>
         </Dialog.Content>
         <Dialog.Actions>
-          <Button onPress={hideDialog}>Start</Button>
+          <Button onPress={hideDialog}>
+            {t('welcomen-dialog.actions.start')}
+          </Button>
         </Dialog.Actions>
       </Dialog>
     </Portal>

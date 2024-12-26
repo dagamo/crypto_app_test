@@ -2,8 +2,10 @@ import React, {useCallback, useMemo} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {IHeaderCryptoListProps} from './interface';
 import {Button, Searchbar} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 export default function HeaderCryptoList({onSearch}: IHeaderCryptoListProps) {
+  const {t} = useTranslation();
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeText = useCallback((text: string) => {
@@ -22,7 +24,7 @@ export default function HeaderCryptoList({onSearch}: IHeaderCryptoListProps) {
     return (
       <View style={styles.container}>
         <Searchbar
-          placeholder={'Filter by Minimum 24-hr % Change'}
+          placeholder={t('filter.placeholder')}
           onChangeText={onChangeText}
           value={searchQuery}
           style={styles.searchbar}
@@ -33,13 +35,13 @@ export default function HeaderCryptoList({onSearch}: IHeaderCryptoListProps) {
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button mode="contained" onPress={_onSearch}>
-              Filter
+              {t('filter.button')}
             </Button>
           </View>
         </View>
       </View>
     );
-  }, [_onSearch, searchQuery, onChangeText, onClear]);
+  }, [_onSearch, searchQuery, onChangeText, onClear, t]);
 }
 
 const styles = StyleSheet.create({

@@ -3,7 +3,9 @@ import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 interface UserStore {
   username: string;
+  isFirstTime: boolean;
   setUsername: (username: string) => void;
+  setIsFirstTime: (isFirstTime: boolean) => void;
   reset: () => void;
 }
 
@@ -11,8 +13,10 @@ const useUserStore = create<UserStore>()(
   persist(
     set => ({
       username: '',
+      isFirstTime: false,
       setUsername: (username: string) => set({username}),
-      reset: () => set({username: ''}),
+      setIsFirstTime: (isFirstTime: boolean) => set({isFirstTime}),
+      reset: () => set({username: '', isFirstTime: false}),
     }),
     {
       name: 'user',

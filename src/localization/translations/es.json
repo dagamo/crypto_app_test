@@ -1,0 +1,37 @@
+{
+  "language": "Español",
+  "screens": {
+    "login": {
+      "title": "Iniciar sesión Crypto",
+      "text": {
+        "username": "Usuario"
+      },
+      "actions": {
+        "login": "Iniciar Sesión"
+      }
+    },
+    "ticker": {
+      "timer": "Tiempo Restante:"
+    },
+    "profile": {
+      "logout-button": "Cerrar Sesión",
+      "english": "Ingles",
+      "spanish": "Español"
+    }
+  },
+  "welcomen-dialog": {
+    "title": "Bienvenido a Crypto App",
+    "message": "Hola [TEXT], explora el mundo de la criptomoneda con nosotros!",
+    "actions": {
+      "start": "Comenzar"
+    }
+  },
+  "filter": {
+    "placeholder": "Filter por porcentaje de cambio de 24h",
+    "button": "Filtrar"
+  },
+  "bottom-tab": {
+    "home": "Inicio",
+    "profile": "Perfil"
+  }
+}

@@ -8,7 +8,7 @@
 import React from 'react';
 import {SafeAreaView, useColorScheme} from 'react-native';
 import {PaperProvider} from 'react-native-paper';
-
+import '@/localization/i18n';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import RootStack from './src/navigation/StackNavigator';

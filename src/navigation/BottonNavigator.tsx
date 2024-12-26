@@ -3,22 +3,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TickerStackNavigator from './TickerStackNavigator';
 import {Icon} from 'react-native-paper';
 import ProfileScreen from '@/screens/profile';
+import {useTranslation} from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color}) => {
-          let iconName: string | undefined;
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Profile') {
-            iconName = 'account';
-          }
-          return <Icon source={iconName} size={30} color={color} />;
-        },
+      screenOptions={() => ({
         tabBarActiveTintColor: 'purple',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
@@ -27,8 +20,26 @@ function BottomTabNavigator() {
         },
         headerShown: false,
       })}>
-      <Tab.Screen name="Home" component={TickerStackNavigator} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        key={'Home'}
+        name={t('bottom-tab.home')}
+        component={TickerStackNavigator}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Icon source={'home'} size={30} color={color} />;
+          },
+        }}
+      />
+      <Tab.Screen
+        key={'Profile'}
+        name={t('bottom-tab.profile')}
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({color}) => {
+            return <Icon source={'account'} size={30} color={color} />;
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 }

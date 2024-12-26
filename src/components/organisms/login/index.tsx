@@ -8,8 +8,10 @@ import {
 } from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 import {ILoginForm} from './interface';
+import {useTranslation} from 'react-i18next';
 
 export default function LoginForm({onSubmit}: ILoginForm) {
+  const {t} = useTranslation();
   const [username, setUsername] = useState('');
   const {setOpenNotification} = useContext(NotificationContext);
   const validateUsername = () => {
@@ -27,11 +29,11 @@ export default function LoginForm({onSubmit}: ILoginForm) {
     <>
       <TextInput
         style={styles.input}
-        label="Username"
+        label={t('screens.login.text.username')}
         onChange={onUsernameChange}
       />
       <Button id="login-button" mode="contained" onPress={validateUsername}>
-        Login
+        {t('screens.login.actions.login')}
       </Button>
     </>
   );

@@ -3,9 +3,11 @@ import React, {useMemo} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ITickerTemplateChildren, ITickerTemplateProps} from './interface';
 import {Avatar, Text} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 const TickerTemplate: React.FC<ITickerTemplateChildren> &
   ITickerTemplateProps = ({children, timer, getImage}) => {
+  const {t} = useTranslation();
   return useMemo(
     () => (
       <View style={styles.container}>
@@ -16,7 +18,7 @@ const TickerTemplate: React.FC<ITickerTemplateChildren> &
           }}></Avatar.Image>
         <View style={styles.textContainer}>
           <Text style={styles.text_bold} variant="titleLarge">
-            Timer:{' '}
+            {t('screens.ticker.timer')}
           </Text>
           <Text variant="titleLarge">{timer}</Text>
         </View>

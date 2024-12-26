@@ -1,0 +1,37 @@
+{
+  "language": "English",
+  "screens": {
+    "login": {
+      "title": "Sign in Crypto",
+      "text": {
+        "username": "Username"
+      },
+      "actions": {
+        "login": "Login"
+      }
+    },
+    "ticker": {
+      "timer": "Timer:"
+    },
+    "profile": {
+      "logout-button": "Logout",
+      "english": "English",
+      "spanish": "Spanish"
+    }
+  },
+  "welcomen-dialog": {
+    "title": "Welcome to Crypto App",
+    "message": "Hi [TEXT], explore the world of crypto with us!",
+    "actions": {
+      "start": "Start"
+    }
+  },
+  "filter": {
+    "placeholder": "Filter by Minimum 24-hr % Change",
+    "button": "Filter"
+  },
+  "bottom-tab": {
+    "home": "Home",
+    "profile": "Profile"
+  }
+}
