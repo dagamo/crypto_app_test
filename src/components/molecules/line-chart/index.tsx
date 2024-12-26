@@ -16,21 +16,21 @@ const LineChartComponent = ({data}: ILineChartProps) => {
       {data.length ? (
         <LineChart
           data={{
-            labels: data.map(item => item.time), // Etiquetas del eje X (tiempo)
+            labels: data.map(item => item.time),
             datasets: [
               {
-                data: data.map(item => item.price), // Precios en el eje Y
-                strokeWidth: 2, // Grosor de la línea
+                data: data.map(item => item.price),
+                strokeWidth: 2,
               },
             ],
           }}
           width={width}
           height={220}
           formatXLabel={xLabel => {
-            return xLabel; // Deberías retornar la etiqueta directamente (tiempo)
+            return xLabel;
           }}
           formatYLabel={xLabel => {
-            return formatCurrencyUSD(xLabel); // Formato de la moneda
+            return formatCurrencyUSD(xLabel);
           }}
           bezier
           yLabelsOffset={-1}
@@ -38,7 +38,7 @@ const LineChartComponent = ({data}: ILineChartProps) => {
             backgroundColor: theme.colors.primary,
             backgroundGradientFrom: theme.colors.primary,
             backgroundGradientTo: theme.colors.primary,
-            decimalPlaces: 2, // Decimales para el precio
+            decimalPlaces: 2,
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
@@ -51,7 +51,7 @@ const LineChartComponent = ({data}: ILineChartProps) => {
             },
           }}
           withDots={true}
-          withVerticalLabels={true} // Asegúrate de que las etiquetas verticales estén habilitadas
+          withVerticalLabels={true}
         />
       ) : (
         <SkeletonChartLoader />
