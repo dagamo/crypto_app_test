@@ -2,15 +2,13 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # IOS APP
 
-<img src="src/assets/ios1.png" alt="Pantalla principal" height="400">
-
-<img src="src/assets/ios2.png" alt="Pantalla principal" height="400">
-
-<img src="src/assets/ios3.png" alt="Pantalla principal" height="400">
-
-<img src="src/assets/ios4.png" alt="Pantalla principal" height="400">
-
-<img src="src/assets/ios5.png" alt="Pantalla principal" height="400">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+  <img src="src/assets/ios1.png" height="400">
+  <img src="src/assets/ios2.png" height="400">
+  <img src="src/assets/ios3.png" height="400">
+  <img src="src/assets/ios4.png" height="400">
+  <img src="src/assets/ios5.png" height="400">
+</div>
 
 # Getting Started
 
