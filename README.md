@@ -10,6 +10,16 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
   <img src="src/assets/ios5.png" height="400">
 </div>
 
+# Android APP
+
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+  <img src="src/assets/android1.png" height="400">
+  <img src="src/assets/android2.png" height="400">
+  <img src="src/assets/android3.png" height="400">
+  <img src="src/assets/android4.png" height="400">
+  <img src="src/assets/android5.png" height="400">
+</div>
+
 # Getting Started
 
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
