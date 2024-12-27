@@ -38,6 +38,7 @@ npm install
 yarn install
 ```
 Install Pods in ios enviroment
+```
 cd ios && pod install
 ```
 ## Step 2: Start the Metro Server
